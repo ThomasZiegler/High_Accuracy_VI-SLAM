@@ -1,0 +1,555 @@
+@article{Blanco2014,
+abstract = {An arbitrary rigid transformation in SE(3) can be separated into two parts, namely, a translation and a rigid rotation. This technical report reviews, under a unifying viewpoint, three common alternatives to representing the rotation part: sets of three (yaw-pitch-roll) Euler angles, orthogonal rotation matrices from SO(3) and quaternions. It will be described: (i) the equivalence between these representations and the formulas for transforming one to each other (in all cases considering the translational and rotational parts as a whole), (ii) how to compose poses with poses and poses with points in each representation and (iii) how the uncertainty of the poses (when modeled as Gaussian distributions) is affected by these transformations and compositions. Some brief notes are also given about the Jacobians required to implement least-squares optimization on manifolds, an very promising approach in recent engineering literature. The text reflects which MRPT C++ library 1 functions implement each of the described algorithms. All the implementations have been thoroughly validated by means of unit testing and numerical estimation of the Jacobians.},
+author = {Blanco, Jl},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/jlblanco2010geometry3d{\_}techrep.pdf:pdf},
+journal = {University of Malaga, Tech. Rep},
+keywords = {()},
+number = {3},
+pages = {1--56},
+title = {{A tutorial on se (3) transformation parameterizations and on-manifold optimization}},
+url = {http://www.ual.es/personal/jlblanco/{\%}5Cnhttp://mapir.isa.uma.es/{\%}5Cnhttp://mapir.isa.uma.es/{~}jlblanco/papers/jlblanco2010geometry3D{\_}techrep.pdf},
+year = {2014}
+}
+@article{Ila2016Highly,
+abstract = {The most common way to deal with the uncertainty present in noisy sensorial perception and action is to model the problem with a probabilistic framework. Maximum likelihood estimation (MLE) is a well-known estimation method used in many robotic and computer vision applications. Under Gaussian assumption, the MLE converts to a nonlinear least squares (NLS) problem. Efficient solutions to NLS exist and they are based on iteratively solving sparse linear systems until convergence. In general, the existing solutions provide only an estimation of the mean state vector, the resulting covariance being computationally too expensive to recover. Nevertheless, in many simultaneous localisation and mapping (SLAM) applications, knowing only the mean vector is not enough. Data association, obtaining reduced state representations, active decisions and next best view are only a few of the applications that require fast state covariance recovery. Furthermore, computer vision and robotic applications are in general performed online. In this case, the state is updated and recomputed every step and its size is continuously growing, therefore, the estimation process may become highly computationally demanding. This paper introduces a general framework for incremental MLE called SLAM++, which fully benefits from the incremental nature of the online applications, and provides efficient estimation of both the mean and the covariance of the estimate. Based on that, we propose a strategy for maintaining a sparse and scalable state representation for large scale mapping, which uses information theory measures to integrate only informative and non-redundant contributions to the state representation. SLAM++ differs from existing implementations by performing all the matrix operations by blocks. This led to extremely fast matrix manipulation and arithmetic operations. Even though this paper tests SLAM++ efficiency on SLAM problems, its applicability remains general.},
+archivePrefix = {arXiv},
+arxivId = {1608.03037},
+author = {Ila, Viorela and Polok, Luk{\'{a}}s and Solony, Marek and Svoboda, Pavel},
+eprint = {1608.03037},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/avaiting printing/1608.03037.pdf:pdf},
+journal = {CoRR},
+title = {{Highly Efficient Compact Pose SLAM with SLAM++}},
+url = {http://arxiv.org/abs/1608.03037},
+volume = {abs/1608.0},
+year = {2016}
+}
+@inproceedings{Polok2013Incremental,
+abstract = {Efficiently solving nonlinear least squares (NLS) problems is crucial for many applications in robotics. In online applications, solving the associated nolinear systems every step may become very expensive. This paper introduces online, incremental solutions, which take full advantage of the sparse- block structure of the problems in robotics. In general, the solution of the nonlinear system is approximated by incrementally solving a series of linearized problems. The most computationally demanding part is to assemble and solve the linearized system at each iteration. In our solution, this is mitigated by incrementally updating the factorized form of the linear system and changing the linearization point only if needed. The incremental updates are done using a resumed factorization only on the parts affected by the new information added to the system at every step. The sparsity of the factorized form directly affects the efficiency. In order to obtain an incremental factorization with persistent reduced fill-in, a new incremental ordering scheme is proposed. Furthermore, the implementation exploits the block structure of the problems and offers efficient solutions to manipulate block matrices, including a highly efficient Cholesky factorization on sparse block matrices. In this work, we focus our efforts on testing the method on SLAM applications, but the applicability of the technique remains general. The experimental results show that our implementation outperforms the state of the art SLAM implementations on all the tested datasets. I.},
+author = {Polok, Lukas and Ila, Viorela and Solony, Marek and Smrz, Pavel and Zemcik, Pavel},
+booktitle = {IFAC Intelligent Autonomous Vehicles Symposium},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/p42.pdf:pdf},
+title = {{Incremental Block Cholesky Factorization for Nonlinear Least Squares in Robotics}},
+year = {2013}
+}
+@inproceedings{Delmerico2018Benchmark,
+abstract = {Flying robots require a combination of accuracy and low latency in their state estimation in order to achieve stable and robust flight. However, due to the power and payload constraints of aerial platforms, state estimation algorithms must provide these qualities under the computational constraints of embedded hardware. Cameras and inertial measurement units (IMUs) satisfy these power and payload constraints, so visual- inertial odometry (VIO) algorithms are popular choices for state estimation in these scenarios, in addition to their ability to operate without external localization from motion capture or global positioning systems. It is not clear from existing results in the literature, however, which VIO algorithms perform well under the accuracy, latency, and computational constraints of a flying robot with onboard state estimation. This paper evaluates an array of publicly-available VIO pipelines (MSCKF, OKVIS, ROVIO, VINS-Mono, SVO+MSF, and SVO+GTSAM) on different hardware configurations, including several single- board computer systems that are typically found on flying robots. The evaluation considers the pose estimation accuracy, per-frame processing time, and CPU and memory load while processing the EuRoC datasets, which contain six degree of freedom (6DoF) trajectories typical of flying robots. We present our complete results as a benchmark for the research community. I.},
+author = {Delmerico, Jeffrey and Scaramuzza, Davide},
+booktitle = {IEEE International Conference on Robotics and Automation (ICRA)},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/ICRA18{\_}Delmerico.pdf:pdf},
+title = {{A Benchmark Comparison of Monocular Visual-Inertial Odometry Algorithms for Flying Robots}},
+year = {2018}
+}
+@article{Forster2017Manifold,
+abstract = {Current approaches for visual-inertial odometry (VIO) are able to attain highly accurate state estimation via nonlinear optimization. However, real-time optimization quickly becomes infeasible as the trajectory grows over time, this problem is further emphasized by the fact that inertial measurements come at high rate, hence leading to fast growth of the number of variables in the optimization. In this paper, we address this issue by preintegrating inertial measurements between selected keyframes into single relative motion constraints. Our first contribution is a $\backslash$emph{\{}preintegration theory{\}} that properly addresses the manifold structure of the rotation group. We formally discuss the generative measurement model as well as the nature of the rotation noise and derive the expression for the $\backslash$emph{\{}maximum a posteriori{\}} state estimator. Our theoretical development enables the computation of all necessary Jacobians for the optimization and a-posteriori bias correction in analytic form. The second contribution is to show that the preintegrated IMU model can be seamlessly integrated into a visual-inertial pipeline under the unifying framework of factor graphs. This enables the application of incremental-smoothing algorithms and the use of a $\backslash$emph{\{}structureless{\}} model for visual measurements, which avoids optimizing over the 3D points, further accelerating the computation. We perform an extensive evaluation of our monocular $\backslash$VIO pipeline on real and simulated datasets. The results confirm that our modelling effort leads to accurate state estimation in real-time, outperforming state-of-the-art approaches.},
+archivePrefix = {arXiv},
+arxivId = {1512.02363},
+author = {Forster, Christian and Carlone, Luca and Dellaert, Frank and Scaramuzza, Davide},
+doi = {10.1109/TRO.2016.2597321},
+eprint = {1512.02363},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/07557075.pdf:pdf},
+isbn = {9781467380256},
+issn = {15523098},
+journal = {IEEE Transactions on Robotics},
+keywords = {Computer vision,sensor fusion,visual-inertial odometry (VIO)},
+number = {1},
+pages = {1--21},
+pmid = {15523098},
+title = {{On-Manifold Preintegration for Real-Time Visual-Inertial Odometry}},
+volume = {33},
+year = {2017}
+}
+@article{Kaess2014iSAM2,
+abstract = {We present a novel data structure, the Bayes tree, that provides an algorithmic foundation enabling a better understanding of existing graphical model inference algorithms and their connection to sparse matrix factorization methods. Similar to a clique tree, a Bayes tree encodes a factored probability density, but unlike the clique tree it is directed and maps more naturally to the square root information matrix of the simultaneous localization and mapping (SLAM) problem. In this paper, we highlight three insights provided by our new data structure. First, the Bayes tree provides a better understanding of the matrix factorization in terms of probability densities. Second, we show how the fairly abstract updates to a matrix factorization translate to a simple editing of the Bayes tree and its conditional densities. Third, we apply the Bayes tree to obtain a completely novel algorithm for sparse nonlinear incremental optimization, named iSAM2, which achieves improvements in efficiency through incremental variable re-ordering and fluid relinearization, eliminating the need for periodic batch steps.We analyze various properties of iSAM2 in detail, and show on a range of real and simulated datasets that our algorithm compares favorably with other recent mapping algorithms in both quality and efficiency},
+annote = {"iSAM2 is an incremental smoothing algorithm, which leverages the expressiveness of factor graphs to maintain sparsity and to identify and update only the typically small subset of variables affected by a new measurement.
+
+In an odometry setting, this allows iSAM2 to achieve the same accuracy as batch estimation of the whole trajectory, while preserving real-time capability. Bundle adjustment with iSAM2 is consistent [45], which means that the estimated covariance of the estimate matches the estimation errors (e.g., are not over-confident)." [From SVO2 Paper]
+
+The authors present a new data structure, the bayes tree, which allows for an easy visual identification of the affected part by new measurements. Only these have to be updated.},
+author = {Kaess, Michael and Johannsson, Hordur and Roberts, Richard and Ila, Viorela and Leonard, Jhon John and Dellaert, Frank},
+doi = {10.1177/0278364911430419},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/78894.pdf:pdf},
+isbn = {0278-3649},
+issn = {0278-3649},
+journal = {The International Journal of Robotics Research},
+keywords = {back-end,clique tree,graphical models,junction tree,mization,nonlinear opti-,probabilistic inference,slam,smoothing and mapping,sparse linear algebra},
+mendeley-tags = {back-end},
+number = {2},
+pages = {216--235},
+pmid = {956923},
+title = {{iSAM2: Incremental smoothing and mapping using the Bayes tree}},
+volume = {31},
+year = {2014}
+}
+@article{Usenko2016,
+abstract = {We propose a novel direct visual-inertial odometry method for stereo cameras. Camera pose, velocity and IMU biases are simultaneously estimated by minimizing a combined photometric and inertial energy functional. This allows us to exploit the complementary nature of vision and inertial data. At the same time, and in contrast to all existing visual-inertial methods, our approach is fully direct: geometry is estimated in the form of semi-dense depth maps instead of manually designed sparse keypoints. Depth information is obtained both from static stereo – relating the fixed-baseline images of the stereo camera – and temporal stereo – relating images from the same camera, taken at different points in time. We show that our method outperforms not only vision-only or loosely coupled approaches, but also can achieve more accurate results than state-of-the-art keypoint-based methods on different datasets, including rapid motion and significant illumination changes. In addition, our method provides high-fidelity semi-dense, metric reconstructions of the environment, and runs in real-time on a CPU. I.},
+annote = {The authors propose a tightly coupled, direct visual inertial stereo odometry. The IMU ensures convergence even for fast motions in the heavily non-convex photometric optimization.
+
+Depth is estimaten from both, static stereo and temporal stereo from pixels with high image gradient. 
+
+IMU is preintegrated using Euler-angle approach. 
+
+Optimization is only done for the states in current, previous and reference frame, all other states are marginalized out using Schur complement.
+
+Relinearization in the optimization is done by a frist-order approximation to reduce computer power.
+
+Good perfromance compared to ASLAM, but no actual result of computation power needed and timings. (Only possible to run in real-time on Laptop CPU)},
+author = {Usenko, Vladyslav and Engel, Jakob and St{\"{u}}ckler, J{\"{o}}rg and Cremers, Daniel},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Usenko et al. - 2016 - Direct visual-inertial odometry with stereo cameras.pdf:pdf},
+pages = {1885--1892},
+title = {{Direct visual-inertial odometry with stereo cameras}},
+year = {2016}
+}
+@article{Leutenegger2015,
+abstract = {Combining visual and inertial measurements has become popular in mobile robotics, since the two sensing modalities offer complementary characteristics that make them the ideal choice for accurate visual–inertial odometry or simultaneous localization and mapping (SLAM). While historically the problem has been addressed with filtering, advancements in visual estimation suggest that nonlinear optimization offers superior accuracy, while still tractable in complexity thanks to the sparsity of the underlying problem. Taking inspiration from these findings, we formulate a rigorously probabilistic cost function that combines reprojection errors of landmarks and inertial terms. The problem is kept tractable and thus ensuring real-time operation by limiting the optimization to a bounded window of keyframes through marginalization. Keyframes may be spaced in time by arbitrary intervals, while still related by linearized inertial terms. We present evaluation results on complementary datasets recorded with our custom-built stereo visual–inertial hardware that accurately synchronizes accelerometer and gyroscope measurements with imagery. A comparison of both a stereo and monocular version of our algorithm with and without online extrinsics estimation is shown with respect to ground truth. Furthermore, we compare the performance to an implementation of a state-of-the-art stochastic cloning sliding-window filter. This competitive reference implementation performs tightly coupled filtering-based visual–inertial odometry. While our approach declaredly demands more computation, we show its superior performance in terms of accuracy.},
+author = {Leutenegger, Stefan and Lynen, Simon and Bosse, Michael and Siegwart, Roland and Furgale, Paul},
+doi = {10.1177/0278364914554813},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Leutenegger et al. - 2015 - Keyframe-based visual – inertial odometry using nonlinear optimization.pdf:pdf},
+journal = {The International Journal of Robotics Research},
+keywords = {bundle adjustment,imu,inertial measurement unit,inertial odometry,keyframes,robotics,sensor fusion,simultaneous localization and mapping,slam,stereo camera,visual},
+number = {3},
+pages = {314--334},
+title = {{Keyframe-based visual – inertial odometry using nonlinear optimization}},
+url = {https://doi.org/10.1177/0278364914554813},
+volume = {34},
+year = {2015}
+}
+@article{Yang2017Challenges,
+abstract = {Monocular visual odometry (VO) has seen tremendous improvements in accuracy, robustness and efficiency, and has gained exponential popularity over recent years. Nevertheless, no comprehensive evaluations have been performed to reveal the influences of the three easily overlooked, yet very influential aspects: photometric calibration, motion bias and rolling shutter effect. In this work, we evaluate these three aspects quantitatively on the state of the art of direct, feature-based and semi-direct methods, providing the community with useful practical knowledge both for better applying existing methods and developing new algorithms of VO and SLAM. Conclusions (some of which are counterintuitive) are drawn with insightful technical and empirical analyses to all of our experiments. Possible improvements on existing methods are directed or proposed, such as a sub-pixel accuracy refinement of ORB-SLAM which boosts its performance.},
+archivePrefix = {arXiv},
+arxivId = {1705.04300},
+author = {Yang, Nan and Wang, Rui and Gao, Xiang and Cremers, Daniel},
+eprint = {1705.04300},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/avaiting printing/1705.04300.pdf:pdf},
+journal = {CoRR},
+title = {{Challenges in Monocular Visual Odometry: Photometric Calibration, Motion Bias and Rolling Shutter Effect}},
+url = {http://arxiv.org/abs/1705.04300},
+volume = {abs/1705.0},
+year = {2017}
+}
+@article{Burri2016EuRoC,
+abstract = {This paper presents visual-inertial datasets collected on-board a Micro Aerial Vehicle (MAV). The datasets contain synchronized stereo images, IMU measure- ments, and accurate ground truth. The first batch of datasets facilitates the design and evaluation of visual-inertial localization algorithms on real flight data. It was collected in an industrial environment and contains millimeter accurate position ground truth from a laser tracking system. The second batch of datasets is aimed at precise 3 D environment re- construction and was recorded in a room equipped with a motion capture system. The datasets contain 6 D pose ground truth and a detailed 3 D scan of the environment. Eleven datasets are provided in total, ranging from slow flights under good visual condi- tions to dynamic flights with motion blur and poor illumination, enabling researchers to thoroughly test and evaluate their algorithms. All datasets contain raw sensor measurements, spatio-temporally aligned sensor data and ground truth, extrinsic and intrinsic calibrations, and datasets for custom calibrations.},
+author = {Burri, Michael and Nikolic, Janosch and Gohl, Pascal and Schneider, Thomas and Rehder, Joern and Omari, Sammy and Achtelik, Markus W and Siegwart, Roland},
+doi = {10.1177/0278364915620033},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Burri et al. - 2016 - The EuRoC micro aerial vehicle datasets.pdf:pdf},
+journal = {The International Journal of Robotics Research},
+title = {{The EuRoC micro aerial vehicle datasets}},
+url = {http://ijr.sagepub.com/content/early/2016/01/21/0278364915620033.abstract},
+year = {2016}
+}
+@article{Qin2017VINS,
+abstract = {A monocular visual-inertial system (VINS), consisting of a camera and a low-cost inertial measurement unit (IMU), forms the minimum sensor suite for metric six degrees-of-freedom (DOF) state estimation. However, the lack of direct distance measurement poses significant challenges in terms of IMU processing, estimator initialization, extrinsic calibration, and nonlinear optimization. In this work, we present VINS-Mono: a robust and versatile monocular visual-inertial state estimator.Our approach starts with a robust procedure for estimator initialization and failure recovery. A tightly-coupled, nonlinear optimization-based method is used to obtain high accuracy visual-inertial odometry by fusing pre-integrated IMU measurements and feature observations. A loop detection module, in combination with our tightly-coupled formulation, enables relocalization with minimum computation overhead.We additionally perform four degrees-of-freedom pose graph optimization to enforce global consistency. We validate the performance of our system on public datasets and real-world experiments and compare against other state-of-the-art algorithms. We also perform onboard closed-loop autonomous flight on the MAV platform and port the algorithm to an iOS-based demonstration. We highlight that the proposed work is a reliable, complete, and versatile system that is applicable for different applications that require high accuracy localization. We open source our implementations for both PCs and iOS mobile devices.},
+annote = {VINS-mono uses a sliding window-based tightly coupled monocular VIO. Optimizatio is done by visual-inertial bundle adjustment minimizing the sum of prior and the Mahalanobis norm of all measurement residuals. 
+
+IMU Pre-integration is used ot avoid re-propagation of IMU state in case of a changing pose. When IMU biases changes aren't small re-propagation is done, but can be avoided by first-order apporximation in case of small changes.
+
+Further VINS-mono supports: automatic estimator initialization, online extrinsic calibration, failure detection and recovery, loop detection, and global pose graph optimization, map merge, pose graph reuse, online temporal calibration, rolling shutter support},
+archivePrefix = {arXiv},
+arxivId = {1708.03852},
+author = {Qin, Tong and Li, Peiliang and Shen, Shaojie},
+eprint = {1708.03852},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/1708.03852v1.pdf:pdf},
+journal = {CoRR},
+pages = {1--17},
+title = {{VINS-Mono: A Robust and Versatile Monocular Visual-Inertial State Estimator}},
+url = {http://arxiv.org/abs/1708.03852},
+volume = {abs/1708.0},
+year = {2017}
+}
+@article{Engel2016Direct,
+abstract = {We propose a novel direct sparse visual odometry formulation. It combines a fully direct probabilistic model (minimizing a photometric error) with consistent, joint optimization of all model parameters, including geometry -- represented as inverse depth in a reference frame -- and camera motion. This is achieved in real time by omitting the smoothness prior used in other direct methods and instead sampling pixels evenly throughout the images. Since our method does not depend on keypoint detectors or descriptors, it can naturally sample pixels from across all image regions that have intensity gradient, including edges or smooth intensity variations on mostly white walls. The proposed model integrates a full photometric calibration, accounting for exposure time, lens vignetting, and non-linear response functions. We thoroughly evaluate our method on three different datasets comprising several hours of video. The experiments show that the presented approach significantly outperforms state-of-the-art direct and indirect methods in a variety of real-world settings, both in terms of tracking accuracy and robustness.},
+annote = {DSO uses a fixed number of active key frames as much distributed in space as possible and a fixed number of active points equaly distributed across space and active frames.
+
+Optimization is done in a sliding window approach using Gauss-Newton algorithm. Obsolete information gets marinalized out using the Schur complement. 
+
+Direct methods are based on constant brightness assumption, thus the autors propose a photometric camera calibration pipeline to recover the irradiance images.
+
+
+More Detail:
+
+Always 7 keyframes active, new ones are created when field of view changes, occlusions occurs and camera exposer time changes. Old keyframes (with less than 5{\%} of their points visible in newest keyframe, or if more than 7 frames active the ones that are not well -distributed in 3D space ) are marginalized. 
+
+New points:
+- Candidate Point Selection, points that are well-distributed and have sufficiently high image gradient magnitude.
+- Canidate Point Tracking, in subsequent frames along epipolar line by minimizing photometric error. 
+- Canidate Point Activation for all marginalized points new keypoints have to be activated. Keypoints which maximize the distance to any active keypoint, porjected in the most recent keyframe, get activated.
+- Outlier and Oclusion Detection: A Point gets discarded if (1) the minimum along epipolar line is not sufficient distinct and (2) photometric error surpasses a threshold, relative to the median residual in the respective frame.},
+archivePrefix = {arXiv},
+arxivId = {1607.02565},
+author = {Engel, Jakob and Koltun, Vladlen and Cremers, Daniel},
+doi = {10.1109/TPAMI.2017.2658577},
+eprint = {1607.02565},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/1607.02565.pdf:pdf},
+isbn = {0162-8828 VO - PP},
+issn = {0162-8828},
+journal = {CoRR},
+pmid = {28060704},
+title = {{Direct Sparse Odometry}},
+url = {http://arxiv.org/abs/1607.02565},
+volume = {abs/1607.0},
+year = {2016}
+}
+@article{Forster2015Supp,
+author = {Forster, Christian and Carlone, Luca and Dellaert, Frank and Scaramuzza, Davide},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/RSS15{\_}Forster{\_}Supplementary.pdf:pdf},
+number = {3},
+pages = {1--10},
+title = {{Supplementary Material to : IMU Preintegration on Manifold for E cient Visual-Inertial Maximum-a-Posteriori Estimation IMU Preintegration : Noise Propagation and Bias Updates}},
+year = {2015}
+}
+@article{Mur-Artal2016,
+abstract = {We present ORB-SLAM2 a complete SLAM system for monocular, stereo and RGB-D cameras, including map reuse, loop closing and relocalization capabilities. The system works in real-time in standard CPUs in a wide variety of environments from small hand-held indoors sequences, to drones flying in industrial environments and cars driving around a city. Our backend based on Bundle Adjustment with monocular and stereo observations allows for accurate trajectory estimation with metric scale. Our system includes a lightweight localization mode that leverages visual odometry tracks for unmapped regions and matches to map points that allow for zero-drift localization. The evaluation in 29 popular public sequences shows that our method achieves state-of-the-art accuracy, being in most cases the most accurate SLAM solution. We publish the source code, not only for the benefit of the SLAM community, but with the aim of being an out-of-the-box SLAM solution for researchers in other fields.},
+annote = {ORB-SLAM2 enlarges the ORB-SLAM with the capapility of Stero and RGB-D Cameras. This allows extraction of depth infromation from just a single frame, which can be critical to not loose tracking in fast motions.
+
+ORB2 use ORB-features for all its tasks implementend in 4 threads.
+1) Tracking to find camera pose minimizing reporjection error using motion-only BA.
+2) Mapping and optimizing set of covisible keyframes and all points in those keyframes using local BA.
+3) Loop closing and correct for accumulated drift by performing pose-graph opimization.
+4) Full BA after loop-closing to optimize all keyframes. 
+
+In addition ORB-SLAM2 provides a localization mode, which can be usefull for leight-weight long-term localization in well-mapped areas. (Mapping and loop-closing are deactivated in this mode)},
+archivePrefix = {arXiv},
+arxivId = {1610.06475},
+author = {Mur-Artal, Raul and Tardos, Juan D},
+eprint = {1610.06475},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Mur-Artal, Tardos - 2016 - ORB-SLAM2 an Open-Source SLAM System for Monocular, Stereo and RGB-D Cameras.pdf:pdf},
+journal = {CoRR},
+number = {October},
+title = {{ORB-SLAM2: an Open-Source SLAM System for Monocular, Stereo and RGB-D cameras}},
+url = {http://arxiv.org/abs/1610.06475},
+volume = {abs/1610.0},
+year = {2016}
+}
+@article{Forster2016SVO,
+abstract = {Direct methods for Visual Odometry (VO) have gained popularity due to their capability to exploit information from all image gradients in the image. However, low com- putational speed as well as missing guarantees for optimality and consistency are limiting factors of direct methods, where established feature-based methods instead succeed at. Based on these considerations, we propose a Semi-direct VO (SVO) that uses direct methods to track and triangulate pixels that are characterized by high image gradients but relies on proven feature-based methods for joint optimization of structure and motion. Together with a robust probabilistic depth estimation algorithm, this enables us to efficiently track pixels lying on weak corners and edges in environments with little or high-frequency texture. We further demonstrate that the algorithm can easily be extended to multiple cameras, to track edges, to include motion priors, and to enable the use of very large field of view cameras, such as fisheye and catadioptric ones. Experimental evaluation on benchmark datasets shows that the algorithm is significantly faster than the state of the art while achieving highly competitive accuracy.},
+annote = {SVO combines the direct and feature-based methods. It uses FAST corners and edgelets on keyframes and performs estimates the frame-to-frame motion by minimizing the photometric error of patches around the keypoints. 
+
+Motion estimate is done in three steps:
+- Sparse Image Alignement by minimizing photometric error of keyponts using epipolar constraint. 
+- Feature Alignment to reduce drift, by alligning patch around feature point in newest frame to feature in reference frame (frame where feature was first extracted). This 2D allignment violates epipolar constraint and generates a reprojection error.
+- Pose {\&} Structure Refinment by minimizeing the squared sum of reprojection error. This optimization is a standart bundle adjustment (BA) and can be solved in real time using the iSAM2 algorithm.
+
+Mapping estimates the depth of newly detected features using a rekursive Bayesian depth filter. Initialized with high uncertainty which gets reduced with new measurement. Hence same feature is searched in the set of previous keyframes and all subsequent frames. Whith enough measurements the uncertainty falls below a certain threshold and a new 3D point is created in the map.
+
+SVO is relativ low in computational cost up to an order of magnitude faster than LSD-SLAM or ORB-SLAM. 
+
+SVO does not have any loop-closer features.},
+archivePrefix = {arXiv},
+arxivId = {1204.3968},
+author = {Forster, Christian and Zhang, Zichao and Gassner, Michael and Werlberger, Manuel and Scaramuzza, Davide},
+doi = {10.1109/TRO.2016.2623335},
+eprint = {1204.3968},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Forster et al. - 2016 - SVO Semi-Direct Visual Odometry for Monocular , Wide-angle, and Muti-Camera Systems.pdf:pdf},
+isbn = {9783902823625},
+issn = {1552-3098},
+journal = {Nccr},
+pages = {1--17},
+title = {{SVO: Semi-Direct Visual Odometry for Monocular , Wide-angle, and Muti-Camera Systems}},
+year = {2016}
+}
+@article{Forster2015IMU,
+abstract = {Recent results in monocular visual-inertial navi- gation (VIN) have shown that optimization-based approaches outperform filtering methods in terms of accuracy due to their capability to relinearize past states. However, the improvement comes at the cost of increased computational complexity. In this paper, we address this issue by preintegrating inertial measure- ments between selected keyframes. The preintegration allows us to accurately summarize hundreds of inertial measurements into a single relative motion constraint. Our first contribution is a preintegration theory that properly addresses the manifold struc- ture of the rotation group and carefully deals with uncertainty propagation. The measurements are integrated in a local frame, which eliminates the need to repeat the integration when the linearization point changes while leaving the opportunity for belated bias corrections. The second contribution is to show that the preintegrated IMU model can be seamlessly integrated in a visual-inertial pipeline under the unifying framework of factor graphs. This enables the use of a structureless model for visual measurements, further accelerating the computation. The third contribution is an extensive evaluation of our monocular VIN pipeline: experimental results confirm that our system is very fast and demonstrates superior accuracy with respect to competitive state-of-the-art filtering and optimization algorithms, including off-the-shelf systems such as Google Tango [1].},
+annote = {The motion between two consecutive keyframes are summarized in a single motion constraint, named preintegraded IMU measurement. 
+
+Preintegraion avoids the need of re-propagation the IMU state in case of a pose adjustment in the optimization (linearization point changes). 
+
+The authors also show how changing biases can be incorporated without the need of repeating the integration. This is done using a frist order approximation of the bias change.},
+archivePrefix = {arXiv},
+arxivId = {1512.02363},
+author = {Forster, Christian and Carlone, Luca and Dellaert, Frank and Scaramuzza, Davide},
+doi = {10.15607/RSS.2015.XI.006},
+eprint = {1512.02363},
+file = {:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/RSS15{\_}Forster.pdf:pdf},
+isbn = {9780992374716},
+issn = {2330765X},
+journal = {Robotics: Science and Systems XI},
+title = {{IMU Preintegration on Manifold for Efficient Visual-Inertial Maximum-a-Posteriori Estimation}},
+url = {http://www.roboticsproceedings.org/rss11/p06.pdf},
+year = {2015}
+}
+@article{Durrant-Whyte2006,
+abstract = {This tutorial provides an introduction to Simultaneous Localisation and Mapping (SLAM) and the extensive research on SLAM that has been undertaken over the past decade. SLAM is the process by which a mobile robot can build a map of an environment and at the same time use this map to compute it's own location. The past decade has seen rapid and exciting progress in solving the SLAM problem together with many compelling implementations of SLAM methods. Part I of this tutorial (this paper), describes the probabilistic form of the SLAM problem, essential solution methods and significant implementations. Part II of this tutorial will be concerned with recent advances in computational methods and new formulations of the SLAM problem for large scale and complex environments.},
+archivePrefix = {arXiv},
+arxivId = {there is not},
+author = {Durrant-Whyte, Hugh and Bailey, Tim},
+doi = {10.1109/MRA.2006.1638022},
+eprint = {there is not},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Durrant-Whyte, Bailey - 2006 - Simultaneous localization and mapping (SLAM) Part I The Essential Algorithms.pdf:pdf},
+isbn = {1070-9932},
+issn = {10709932},
+journal = {Robotics {\&} Automation Magazine},
+keywords = {SLAM problem,mobile robots,simultaneous localization and mapping problem},
+pages = {99--110},
+pmid = {8460702},
+title = {{Simultaneous localization and mapping (SLAM): Part I The Essential Algorithms}},
+volume = {2},
+year = {2006}
+}
+@article{Grisetti2010,
+abstract = {Being able to build a map of the environment and to simultaneously localize within this map is an essential skill for mobile robots navigating in unknown environments in absence of external referencing systems such as GPS. This so-called simultaneous localization and mapping (SLAM) problem has been one of the most popular research topics in mobile robotics for the last two decades and efficient approaches for solving this task have been proposed. One intuitive way of formulating SLAM is to use a graph whose nodes correspond to the poses of the robot at different points in time and whose edges represent constraints between the poses. The latter are obtained from observations of the environment or from movement actions carried out by the robot. Once such a graph is constructed, the map can be computed by finding the spatial configuration of the nodes that is mostly consistent with the measurements modeled by the edges. In this paper, we provide an introductory description to the graph-based SLAM problem. Furthermore, we discuss a state-of-the-art solution that is based on least-squares error minimization and exploits the structure of the SLAM problems during optimization. The goal of this tutorial is to enable the reader to implement the proposed methods from scratch.},
+author = {Grisetti, Giorgio and Kummerle, Rainer and Stachniss, Cyrill and Burgard, Wolfram},
+doi = {10.1109/MITS.2010.939925},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Grisetti et al. - 2010 - A tutorial on graph-based SLAM.pdf:pdf},
+isbn = {1939-1390 VO - 2},
+issn = {1939-1390},
+journal = {IEEE Intelligent Transportation Systems Magazine},
+number = {4},
+pages = {31--43},
+title = {{A tutorial on graph-based SLAM}},
+volume = {2},
+year = {2010}
+}
+@article{Leutenegger2013,
+abstract = {The fusion of visual and inertial cues has become popular in robotics due to the complementary nature of the two sensing modalities. While most fusion strategies to date rely on filtering schemes, the visual robotics community has recently turned to non-linear optimization approaches for tasks such as visual Simultaneous Localization And Mapping (SLAM), following the discovery that this comes with signifi- cant advantages in quality of performance and computational complexity. Following this trend, we present a novel approach to tightly integrate visual measurements with readings from an Inertial Measurement Unit (IMU) in SLAM. An IMU error term is integrated with the landmark reprojection error in a fully probabilistic manner, resulting to a joint non-linear cost function to be optimized. Employing the powerful concept of ‘keyframes' we partially marginalize old states to maintain a bounded-sized optimization window, ensuring real-time opera- tion. Comparing against both vision-only and loosely-coupled visual-inertial algorithms, our experiments confirm the benefits of tight fusion in terms of accuracy and robustness.},
+annote = {The primary advantage of VINS is to have the metric scale as well as the roll and pitch angles.
+
+Tightly-coupled keyframe-based VI-SLAM which otimizes the reprojection error togetherer with the inertial terms in one costfunction. 
+
+No pre-integration of the IMU measurements, resulting in IMU-error being a funcion of the robot states. This means error has to be recalculaten whenever the pose in the optimization changes.},
+author = {Leutenegger, Stefan and Furgale, Paul and Rabaud, Vincent and Chli, Margarita and Konolige, Kurt and Siegwart, Roland},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Leutenegger et al. - 2013 - Keyframe-Based Visual-Inertial SLAM using Nonlinear Optimization.pdf:pdf},
+journal = {Proceedings of Robotics: Science and Systems},
+title = {{Keyframe-Based Visual-Inertial SLAM using Nonlinear Optimization}},
+year = {2013}
+}
+@article{Mur-Artal2015,
+abstract = {The gold standard method for tridimensional reconstruction and camera localization from a set of images is well known to be Bundle Adjustment (BA). Although BA was regarded for years as a costly method restricted to the offline domain, several real time algorithms based on BA flourished in the last decade. However those algorithms were limited to perform SLAM in small scenes or only Visual Odometry. In this work we built on excellent algorithms of the last years to design from scratch a Monocular SLAM system that operates in real time, in small and large, indoor and outdoor environments, with the capability of wide baseline loop closing and relocalization, and including full automatic initialization. Our survival of the fittest approach to select the points and keyframes of the reconstruction generates a compact and trackable map that only grows if the scene content changes, enhancing lifelong operation. We present an exhaustive evaluation in 27 sequences from the most popular datasets achieving unprecedented performance with a typical localization accuracy from 0.2{\%} to 1{\%} of the trajectory dimension in scenes from a desk to several city blocks. We make public a ROS implementation.},
+archivePrefix = {arXiv},
+arxivId = {1502.00956},
+author = {Mur-Artal, Raul and Montiel, J M M and Tardos, Juan D},
+doi = {10.1109/TRO.2015.2463671},
+eprint = {1502.00956},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Mur-Artal, Montiel, Tardos - 2015 - ORB-SLAM A Versatile and Accurate Monocular SLAM System.pdf:pdf},
+isbn = {1552-3098},
+issn = {15523098},
+journal = {IEEE Transactions on Robotics},
+keywords = {Lifelong mapping,Simultaneous localization and mapping (SLAM),localization,monocular vision,recognition},
+number = {5},
+pages = {1147--1163},
+title = {{ORB-SLAM: A Versatile and Accurate Monocular SLAM System}},
+volume = {31},
+year = {2015}
+}
+@article{Galvez-Lopez2012,
+abstract = {We propose a novel method for visual place recognition using bag of words obtained from accelerated segment test (FAST)+BRIEF features. For the first time, we build a vocabulary tree that discretizes a binary descriptor space and use the tree to speed up correspondences for geometrical verification. We present competitive results with no false positives in very different datasets, using exactly the same vocabulary and settings. The whole technique, including feature extraction, requires 22 ms/frame in a sequence with 26 300 images that is one order of magnitude faster than previous approaches.},
+author = {Galvez-Lopez, Dorian and Tardos, Juan D},
+doi = {10.1109/TRO.2012.2197158},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/G{\'{a}}lvez-L{\'{o}}pez, Tard{\'{o}}s - 2012 - Bags of binary words for fast place recognition in image sequences.pdf:pdf},
+isbn = {1552-3098},
+issn = {15523098},
+journal = {IEEE Transactions on Robotics},
+keywords = {Bag of binary words,Galvez-Lopez2012,computer vision,place recognition,simultaneous localization and mapping (SLAM)},
+mendeley-tags = {Galvez-Lopez2012},
+number = {5},
+pages = {1188--1197},
+title = {{Bags of binary words for fast place recognition in image sequences}},
+volume = {28},
+year = {2012}
+}
+@article{Kaess2008,
+abstract = {In this paper, we present incremental smoothing and mapping (iSAM), which is a novel approach to the simultaneous localization and mapping problem that is based on fast incremental matrix factorization. iSAM provides an efficient and exact solution by updating a QR factorization of the naturally sparse smoothing information matrix, thereby recalculating only those matrix entries that actually change. iSAM is efficient even for robot trajectories with many loops as it avoids unnecessary fill-in in the factor matrix by periodic variable reordering. Also, to enable data association in real time, we provide efficient algorithms to access the estimation uncertainties of interest based on the factored information matrix. We systematically evaluate the different components of iSAM as well as the overall algorithm using various simulated and real-world datasets for both landmark and pose-only settings.},
+author = {Kaess, Michael and Ranganathan, Ananth and Dellaert, Frank},
+doi = {10.1109/TRO.2008.2006706},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Kaess, Ranganathan, Dellaert - 2008 - iSAM Incremental smoothing and mapping.pdf:pdf},
+isbn = {9781439813287},
+issn = {15523098},
+journal = {IEEE Transactions on Robotics},
+keywords = {Data association,Localization,Mapping,Mobile robots,Nonlinear estimation,Simultaneous localization and mapping (SLAM),Smoothing},
+number = {6},
+pages = {1365--1378},
+pmid = {4682731},
+title = {{iSAM: Incremental smoothing and mapping}},
+volume = {24},
+year = {2008}
+}
+@inproceedings{Mei2010,
+abstract = {This paper proposes a new topo-metric representation of the world based on co-visibility that simplifies data association and improves the performance of appearance-based recognition. We introduce the concept of dynamic bagof-words, which is a novel form of query expansion based on finding cliques in the landmark co-visibility graph. The proposed approach avoids the - often arbitrary - discretisation of space from the robot's trajectory that is common to most image-based loop closure algorithms. Instead we show that reasoning on sets of co-visible landmarks leads to a simple model that out-performs pose-based or view-based approaches. Using real and simulated imagery, we demonstrate that dynamic bag-of-words query expansion can improve precision and recall for appearance-based localisation.},
+author = {Mei, Christopher and Sibley, Gabe and Newman, Paul},
+booktitle = {IEEE/RSJ 2010 International Conference on Intelligent Robots and Systems, IROS 2010 - Conference Proceedings},
+doi = {10.1109/IROS.2010.5652266},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Mei, Sibley, Newman - 2010 - Closing loops without places.pdf:pdf},
+isbn = {9781424466757},
+issn = {2153-0858},
+pages = {3738--3744},
+title = {{Closing loops without places}},
+year = {2010}
+}
+@inproceedings{Forster2014,
+abstract = {We propose a semi-direct monocular visual odometry algorithm that is precise, robust, and faster than current state-of-the-art methods. The semi-direct approach eliminates the need of costly feature extraction and robust matching techniques for motion estimation. Our algorithm operates directly on pixel intensities, which results in subpixel precision at high frame-rates. A probabilistic mapping method that explicitly models outlier measurements is used to estimate 3D points, which results in fewer outliers and more reliable points. Precise and high frame-rate motion estimation brings increased robustness in scenes of little, repetitive, and high-frequency texture. The algorithm is applied to micro-aerial-vehicle state- estimation in GPS-denied environments and runs at 55 frames per second on the onboard embedded computer and at more than 300 frames per second on a consumer laptop. We call our approach SVO (Semi-direct Visual Odometry) and release our implementation as open-source software.},
+annote = {NULL},
+archivePrefix = {arXiv},
+arxivId = {arXiv:1606.05830v2},
+author = {Forster, Christian and Pizzoli, Matia and Scaramuzza, Davide},
+booktitle = {Proceedings - IEEE International Conference on Robotics and Automation},
+doi = {10.1109/ICRA.2014.6906584},
+eprint = {arXiv:1606.05830v2},
+file = {:home/zieglert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Forster, Pizzoli, Scaramuzza - 2014 - SVO Fast semi-direct monocular visual odometry.pdf:pdf},
+isbn = {9781479936847},
+issn = {10504729},
+pages = {15--22},
+pmid = {6576973927449638915},
+title = {{SVO: Fast semi-direct monocular visual odometry}},
+year = {2014}
+}
+
+@misc{ceres-solver,
+author = {Agarwal, Sameer and Mierle, Keir and Others},
+mendeley-groups = {CV/RollingShutter,Tools},
+title = {{Ceres Solver}},
+url = {http://ceres-solver.org}
+}
+
+@article{sibley2010Slide,
+abstract = {We are concerned with improving the range resolution of stereo 
+vision for entry, descent, and landing (EDL) missions to Mars and other 
+planetary bodies. The goal is to create accurate and precise three-dimensional 
+plan- etary surface-structure estimates by filtering sequences of stereo images 
+taken from an autonomous landing vehicle. We describe a sliding window filter 
+(SWF) approach based on delayed state marginalization. The SWF can run in 
+constant time, yet still achieve experimental results close to those of the 
+bundle adjustment solution. This technique can scale from the offline batch 
+least-squares solution to fast online incremental solutions. For instance, if 
+the window encompasses all time, the solution is equivalent to full bundle 
+adjustment; if only one time step is maintained, the solution matches the 
+extended Kalman filter; if poses and landmarks are slowly marginalized out over 
+time such that the state vector ceases to grow, then the filter becomes constant 
+time, like visual odometry. Within the constant time regime, the sliding window 
+approach demonstrates convergence properties that are close to those of the full 
+batch solution and strictly superior to visual odometry. Experiments with real 
+data show that ground structure estimates follow the expected convergence 
+pattern that is predicted by theory. These experiments indicate the 
+effectiveness of filtering long-range stereo for EDL.},
+author = {Sibley, Gabe and Matthies, Larry and Sukhatme, Gaurav},
+file = 
+{:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/Sibley{\_}et{\_}
+al-2010-Journal{\_}of{\_}Field{\_}Robotics.pdf:pdf},
+journal = {J. Field Robotics},
+mendeley-groups = {CV/SLAMliterature},
+pages = {587--608},
+title = {{Sliding window filter with application to planetary landing}},
+volume = {27},
+year = {2010}
+}
+
+@inproceedings{Strasdat2010,
+author = {Strasdat, H and Montiel, J M M and Davison, A},
+booktitle = {Robotics: Science and Systems {\{}VI{\}}},
+doi = {10.15607/rss.2010.vi.010},
+file = 
+{:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/strasdat{\_}etal{\_}
+rss2010.pdf:pdf},
+mendeley-groups = {CV/SLAMliterature},
+month = {jun},
+publisher = {Robotics: Science and Systems Foundation},
+title = {{Scale Drift-Aware Large Scale Monocular {\{}SLAM{\}}}},
+url = {https://doi.org/10.15607{\%}2Frss.2010.vi.010},
+year = {2010}
+}
+
+@inproceedings{Mourikis2007MSCKF,
+abstract = {In this paper, we present an extended Kalman filter (EKF)-based 
+algorithm for real-time vision-aided inertial navigation. The primary 
+contribution of this work is the derivation of a measurement model that is able 
+to express the geometric constraints that arise when a static feature is 
+observed from multiple camera poses. This measurement model does not require 
+including the 3D feature position in the state vector of the EKF and is optimal, 
+up to linearization errors. The vision-aided inertial navigation algorithm we 
+propose has computational complexity only linear in the number of features, and 
+is capable of high-precision pose estimation in large-scale real-world 
+environments. The performance of the algorithm is demonstrated in extensive 
+experimental results, involving a camera/IMU system localizing within an urban 
+area.},
+author = {Mourikis, A I and Roumeliotis, S I},
+booktitle = {Proceedings 2007 IEEE International Conference on Robotics and 
+Automation},
+doi = {10.1109/ROBOT.2007.364024},
+file = 
+{:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/04209642.pdf:pdf},
+issn = {1050-4729},
+keywords = {3D feature position,Cameras,Computational complexity,Inertial 
+navigation,Kalman filters,Large-scale systems,Motion estimation,Motion 
+measurement,Position measurement,Simultaneous localization and mapping,Solid 
+modeling,Vectors,camera pose,extended Kalman filter,feature extraction,geometric 
+constraints,inertial navigation,linear computational complexity,multistate 
+constraint Kalman filter,pose estimation,state vector,static 
+feature,vision-aided inertial navigation},
+mendeley-groups = {CV/SLAMliterature},
+month = {apr},
+pages = {3565--3572},
+title = {{A Multi-State Constraint Kalman Filter for Vision-aided Inertial 
+Navigation}},
+year = {2007}
+}
+
+@inproceedings{Bloesch2015ROVIO,
+abstract = {In this paper, we present a monocular visual-inertial odometry 
+algorithm which, by directly using pixel intensity errors of image patches, 
+achieves accurate tracking performance while exhibiting a very high level of 
+robustness. After detection, the tracking of the multilevel patch features is 
+closely coupled to the underlying extended Kalman filter (EKF) by directly using 
+the intensity errors as innovation term during the update step. We follow a 
+purely robocentric approach where the location of 3D landmarks are always 
+estimated with respect to the current camera pose. Furthermore, we decompose 
+landmark positions into a bearing vector and a distance parametrization whereby 
+we employ a minimal representation of differences on a corresponding 
+$\sigma$-Algebra in order to achieve better consistency and to improve the 
+computational performance. Due to the robocentric, inverse-distance landmark 
+parametrization, the framework does not require any initialization procedure, 
+leading to a truly power-up-and-go state estimation system. The presented 
+approach is successfully evaluated in a set of highly dynamic hand-held 
+experiments as well as directly employed in the control loop of a multirotor 
+unmanned aerial vehicle (UAV).},
+author = {Bloesch, M and Omari, S and Hutter, M and Siegwart, R},
+booktitle = {2015 IEEE/RSJ International Conference on Intelligent Robots and 
+Systems (IROS)},
+doi = {10.1109/IROS.2015.7353389},
+file = 
+{:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/07353389.pdf:pdf},
+keywords = {3D landmark location estimation,Cameras,Estimation,Feature 
+extraction,Kalman filters,Robots,Technological innovation,Three-dimensional 
+displays,UAV,Uncertainty,autonomous aerial vehicles,computational performance 
+improvement,control loop,direct EKF-based approach,distance measurement,extended 
+Kalman filter,feature extraction,image patches,image resolution,image 
+sensors,innovation term,inverse-distance landmark parametrization,landmark 
+position decomposition,mobile robots,multilevel patch feature 
+tracking,multirotor unmanned aerial vehicle,nonlinear filters,object 
+tracking,pixel intensity errors,pose estimation,power-up-and-go state estimation 
+system,robocentric approach,robot vision,robust monocular visual-inertial 
+odometry algorith,state estimation,$\sigma$-algebra},
+mendeley-groups = {CV/SLAMliterature},
+month = {sep},
+pages = {298--304},
+title = {{Robust visual inertial odometry using a direct EKF-based approach}},
+year = {2015}
+}
+
+@article{Umeyama1991,
+abstract = {In many applications of computer vision, the following problem is 
+encountered. Two point patterns (sets of points) {\{}xi{\}} and {\{}xi{\}}; i=1, 
+2, . . ., n are given in m-dimensional space, and the similarity transformation 
+parameters (rotation, translation, and scaling) that give the least mean squared 
+error between these point patterns are needed. Recently, K.S. Arun et al. (1987) 
+and B.K.P. Horn et al. (1987) presented a solution of this problem. Their 
+solution, however, sometimes fails to give a correct rotation matrix and gives a 
+reflection instead when the data is severely corrupted. The proposed theorem is 
+a strict solution of the problem, and it always gives the correct transformation 
+parameters even when the data is corrupted},
+author = {Umeyama, S},
+doi = {10.1109/34.88573},
+file = 
+{:media/data/ownCloud/Schule/ETH/Semester4/SA/PaperSLAM/00088573.pdf:pdf},
+issn = {0162-8828},
+journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+keywords = {Application software,Calibration,Cameras,Computer graphics,Computer 
+vision,Image processing,Parameter estimation,Pattern recognition,Robot vision 
+systems,Robotics and automation,computer vision,error analysis,least mean 
+squared error,least squares approximations,parameter estimation,pattern 
+recognition,transformation parameters,two point patterns},
+mendeley-groups = {Robotics},
+month = {apr},
+number = {4},
+pages = {376--380},
+title = {{Least-squares estimation of transformation parameters between two 
+point patterns}},
+volume = {13},
+year = {1991}
+}

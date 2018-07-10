@@ -1,0 +1,79 @@
+\chapter{Conclusion and Outlook} 
+\label{ch:conclusion}
+
+
+\section{Conclusion}
+In this semester project, an existing open source monocular keyframe based 
+\ac{VIO} pipeline was adapted to achieve accurate pose estimation, while having 
+as little computational demand as possible. Our approach is based on VINS-Mono 
+\citep{Qin2017VINS}, which was chosen after a comparison of the publicly 
+available monocular \ac{VIO} pipelines. \\
+
+An extensive evaluation of the default VINS-Mono pipeline parameters was 
+performed to determine their influence on the accuracy and the per-frame 
+optimization time. Based on these evaluation an approach was proposed, which 
+ignores any features in the \ac{BA} optimization, if the corresponding landmark 
+has been observed in one of the oldest four keyframes. This means, the oldest 
+four keyframes do not provide any feature constraints. This reduces the number 
+of freely adjustable parameters in the optimization. In addition, only features 
+that have been observed in at least six keyframes in the window are marginalized 
+out. Finally, in order to have a save margin in the optimization time, the 
+number of tracked features was reduced to 120. \\
+
+The proposed adaption were then extensively tested on all eleven sequences of 
+the EuRoC dataset. The results show that our approach is less accurate than the 
+default implementation of VINS-Mono, as expected, but is very consistent over 
+the three 
+tested platforms. This includes two computational limited single board 
+computers and a much stronger Laptop. The similar results proof the robustness 
+of our algorithm. Furthermore, the test shows that even the outliers in the 
+per-frame optimization time do not exceed the 100 millisecond, ensuring 
+real-time applicability. The RMSE errors show that our approach is most suitable 
+for slower movements. Whereas with faster movements, the reduced number of 
+features in the optimization becomes noticeable. This suggests, that as one 
+might expect, there is no free lunch in visual state estimation. \\
+
+We also tested the proposed \ac{VIO} pipeline with a \ac{MSF} framework on a 
+\ac{UAV}, which succeeded to hover. However, there was noticeable incertitude 
+in the movement. Due to time limits, this effects could not be further 
+investigated. However we assume, that most of this incertitude can be 
+eliminated by properly tuning the \ac{MSF} parameters and performing a more 
+accurate calibration.\\
+
+We want to note that in our first approach we only ignored the feature 
+constraints in the oldest four keyframes of the sliding window, as described in 
+\autoref{sec:dontOptimizeOldest}. Which is equivalent to perform only a pose 
+graph optimization for the oldest keyframes. However, we had to reduce the 
+number of tracked features down to 80 to achieve real-time performance in all 
+of the tested sequences described in \autoref{subsec:experiment1}. Otherwise, 
+there were always a few outliers in the total per-frame optimization time above 
+100 milliseconds. Reducing the tracked feature that much reduced also the 
+accuracy significantly. This led us to the approach of ignoring all feature
+constraints in the \ac{BA} optimization if a feature has been observed in one 
+of the oldest keyframes. 
+
+\section{Outlook}
+The evaluation is done on the different summands of the \ac{BA} 
+optimization, but this does 
+not cover all of the adjustable parameters. Some of the parameters that have 
+not been analyzed in this work are the following:
+\begin{itemize}
+ \item Minimum distance between two features.
+ \item Keyframe selection threshold (parallax and minimum detected features).
+ \item Solver types in Google's \textit{ceres solver}\citep{ceres-solver}.
+\end{itemize}
+These parameters might have a significant influence on the accuracy or the 
+per-frame optimization time. \\
+
+The \ac{ROS} implementation of the default VINS-Mono and our adaption contains 
+buffers. However, when using as real-time \ac{VIO} pipeline, it would be better 
+to drop frames if the optimization can't catch up with the feature tracker. 
+Otherwise, the \ac{BA} optimization may be performed on old data. Hence, one 
+could create a ``live'' version of our \ac{VIO} pipeline, which does not use 
+buffers. \\
+
+Ignoring features seen in the oldest keyframes is a quite radical approach for 
+reducing the number of feature constraints. A more sophisticated heuristic for 
+reducing the number of feature constraints may lead to an even better time 
+accuracy trade off.
+

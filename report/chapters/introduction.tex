@@ -1,0 +1,70 @@
+\chapter{Introduction}
+\label{sec:introduction}
+%\chapter{Einleitung}
+%\label{sec:einleitung}
+
+
+%State estimation is a fundamental problem in a wide range of applications, 
+%including robotic navigation, autonomous driving, virtual and augmented 
+%reality. 
+
+
+
+\acf{SLAM} is the task of navigating in a previously unknown environment by 
+building a map of the environment which the robot is in and simultaneously 
+estimating its position within this map. \\
+
+\ac{SLAM} systems can usually be divided into two basic components, the 
+front-end and the back-end. The front-end builds a local map and estimates the 
+robot's pose incrementally within this local map. Small deviations are 
+accumulated over time which results in a drift of the estimated pose. If a 
+previously visited location is detected, the back-end can 
+correct for the drift with the help of loop closures and pose graph 
+optimization. 
+Although, a globally topologically consistent map can be achieved this way, the 
+accumulated 
+error cannot be removed completely. This means, the accuracy of the front-end 
+is fundamental for the overall performance of a \ac{SLAM} system. \\
+
+Cameras are now easily found in many consumer electronic products. This makes 
+systems using a single camera very appealing due to their small size and low 
+power consumption. Furthermore, cameras can operate under different light 
+conditions, both indoors and outdoors. Hence, monocular front-end systems 
+have become very popular in recent years. However, it is known that a visual 
+only front-end, implemented as monocular \ac{VO} system, cannot retrieve the 
+scale of a scene. A popular solution for this problem is the integration of an 
+\ac{IMU}. The rich representation of a scene captured with a camera, together 
+with the accurate short-term movement estimates by the \ac{IMU} have been 
+acknowledged to complement each other well.\\ 
+
+The performance of \ac{VIO} system is often evaluated using \acp{UAV}. Due to 
+their fast dynamics and 6 \ac{DoF} movements, they represent the most 
+challenging type of robot. However, \acp{UAV} normally have high power and 
+payload constraints and the state estimation must work on embedded hardware 
+with limited computational resources. \\ 
+
+Monocular \ac{SLAM} or \ac{VIO} solutions are either filter-based (e.g. using an
+\ac{EKF}) or optimization based using keyframes. It has been shown 
+\citep{Strasdat2010} that keyframe based methods outperform filter-based ones, 
+given enough computational power. Hence, most new releases of monocular 
+\ac{SLAM} systems are keyframe based. Keyframes provide the additional 
+advantage that they can be used by simultaneously running 
+algorithms at the same time. Keyframes can for example be exchanged between two 
+robots to perform collaborative \ac{SLAM} \citep{schmuck2017}, 
+\citep{Karrer2018} or keyframes can be used for path planning tasks 
+\citep{alzugaray2017short}. Running other tasks simultaneously beside the 
+\ac{SLAM} system increases the computational payload significantly, reducing the 
+available computational resources dedicated for the \ac{SLAM} task.\\
+
+This work proposes an accurate keyframe based monocular \ac{VIO} system for 
+computationally restricted platforms. The systems builds on an existing 
+open-source \ac{VIO} implementation VINS-Mono \citep{Qin2017VINS}. The 
+impact of the different parameter settings in the initial implementation of 
+VINS-Mono are analyzed on a UP Board, a single board computer. 
+Based on this evaluation an adaption is proposed in order to achieve an 
+implementation with real-time performance. The resulting system is extensively
+tested on all 
+sequences of the EuRoC micro aerial vehicle dataset \citep{Burri2016EuRoC}. 
+Furthermore, the system is deployed on a real \ac{UAV} to ensure its 
+functionality. 
+

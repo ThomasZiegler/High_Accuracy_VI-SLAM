@@ -1,0 +1,25 @@
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+%\chapter*{Zusammenfassung}
+%\addcontentsline{toc}{chapter}{Zusammenfassung}
+
+\acp{UAV} require accurate pose estimates with low latency in order to achieve 
+a robust and stable flight behavior. However, due to the power and payload 
+restrictions 
+of aerial platforms, state estimation algorithms must provide these qualities 
+under computational constraints. Monocular \ac{VIO} systems, consisting 
+of a camera and an \ac{IMU}, can satisfy these constraints and form the minimum 
+sensor suite for 
+metric 6 \ac{DoF} pose estimation.  \\
+
+In this work, we propose an accurate keyframe based monocular \ac{VIO} pipeline 
+for onboard state estimation of \acp{UAV}. The publicly available \ac{VI} 
+\ac{SLAM} system VINS-Mono is therefore adapted. The performance of the 
+\ac{VIO} pipeline is evaluated for different parameter settings. Based on these 
+evaluations, we propose a \ac{VIO} pipeline running in real-time while only 
+exhibiting a little loss in accuracy compared to the default implementation 
+of VINS-Mono.\\
+
+The proposed \ac{VIO} pipeline is extensively tested on all sequences of the 
+EuRoC dataset. Furthermore, the real-time applicability is confirmed by 
+deploying and running the \ac{VIO} pipeline on a real \ac{UAV}. 

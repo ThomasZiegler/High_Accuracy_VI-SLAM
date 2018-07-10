@@ -1,0 +1,34 @@
+\chapter{Approach} 
+\label{ch:approach}
+
+As described in the evaluation, the overall optimization time consists of the 
+time to solve the \ac{BA} optimization and the time needed for the 
+marginalization. The runtime for the \ac{BA} optimization is limited, but the 
+accuracy can be affected depending on the optimization settings. The 
+marginalization time, on the other hand, depends on the number of features to be 
+marginalized. \\
+
+To achieve real-time performance for our \ac{VIO} pipeline, the total 
+optimization time has to be below 100 milliseconds as our system runs with a 
+refresh rate of 10Hz. Based on the evaluation in \autoref{ch:evaluation}, we 
+propose an approach which fulfills this real-time requirement. \\
+
+Our approach reduces the number of tracked features 
+$n_{\text{features\_tracked}}$ and combines the optimization- and 
+marginalization-settings which lead to the best trade off between time and 
+accuracy. In the optimization we ignore landmarks which were observed in at 
+least one of a certain number of old keyframes $n_{\text{oldest\_keyframes}}$. 
+In the marginalization we do not marginalize landmarks which are observed in 
+less than a certain number of (key-)frames $n_{\text{observed\_keyframes}}$. \\
+
+In summary, the proposed changes are: 
+\begin{itemize}
+  \item Reduce the number of tracked features from 150 down to 
+$n_{\text{features\_tracked}}$.
+  \item Ignoring feature constraints in the \ac{BA} optimization, if the 
+corresponding landmark has been observed in at least one of the 
+$n_{\text{oldest\_keyframes}}$ oldest keyframes.
+  \item Only marginalize out features that have been observed in more than 
+$n_{\text{observed\_keyframes}}$ (key-)frames. 
+\end{itemize}
+

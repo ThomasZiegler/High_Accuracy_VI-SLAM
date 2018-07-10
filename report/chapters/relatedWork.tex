@@ -1,0 +1,101 @@
+\chapter{Related Work}
+\label{sec:relatedWork}
+%\chapter{Einleitung}
+%\label{sec:einleitung}
+
+There exists extensive research on vision-based odometry/\ac{SLAM} systems. 
+However, in 
+this chapter we skip a full discussion on the available literature and focus 
+only on work that this semester project relies on. In particular, a benchmark 
+comparison of different \ac{VIO} systems and a brief discussion on the publicly
+available \ac{VIO} and VI-SLAM systems. The chapter ends with a short 
+comparison 
+of the suitability of these systems regarding the goals of this work. 
+
+
+\section{A Benchmark Comparison}
+In \citep{Delmerico2018Benchmark}, an extensive comparison of publicly 
+available \ac{VIO} pipelines (MSCKF, OKVIS, ROVIO, VINS-Mono, SVO+MSF, and 
+SVO+GTSAM) is performed with respect to the per-frame processing time, CPU and 
+memory load. The algorithms are evaluated on all sequences of the EuRoC 
+datasets while processed on different single board computer systems. The 
+results are presented as a benchmark. 
+
+
+
+\section{MSCKF}
+The Multi-State constraint Kalman Filter (MSCKF) \citep{Mourikis2007MSCKF} is a 
+popular \ac{EKF} based \ac{VIO} system. It maintains several previous camera 
+poses in 
+the state vector and uses geometric constraint between all the poses that 
+observe a particular feature as update. There exist a publicly available 
+implementations of this 
+algorithm\footnote{https://github.com/daniilidis-group/msckf\_mono}.
+
+
+\section{OKVIS}
+Open Keyframe-based Visual-Inertial SLAM (OKVIS) \citep{Leutenegger2015} is a 
+state-of-the-art \ac{SLAM} system that works with monocular and stereo cameras. 
+However, it should be noted that it is not optimized for monocular \ac{VIO} and 
+its performance is superior in the stereo setup. It utilizes non-linear 
+\ac{BA} optimization with a sliding window of keyframe poses. Keyframes older 
+than the 
+sliding window are marginalized out in order to retrieve the constraints. The 
+source code of a \ac{ROS} implementation has been made publicly 
+available\footnote{https://github.com/ethz-asl/okvis\_ros}.
+
+
+\section{ROVIO}
+Robust Visual Inertial Odometry (ROVIO) \citep{Bloesch2015ROVIO} is a 
+visual-inertial estimator based on an \ac{EKF}. This\ac{VIO} system uses 
+the photometric error of tracked image patches to find the optimal state in the 
+update step. The framework is specifically designed for monocular systems and 
+does not require any special initialization procedure. The source code of a 
+\ac{ROS} implementation has been made publicly 
+available\footnote{https://github.com/ethz-asl/rovio}.  
+
+
+\section{SVO+GTSAM}
+Semi-Direct Monocular Visual Odometry (SVO) \citep{Forster2016SVO} is a 
+computationally lightweight \ac{VO} algorithm which employs sparse image 
+alignment to estimate motion. It tracks features by minimizing the photometric 
+error of image patches around the features between subsequent frames. The 
+tracking is tightly coupled with an online factor graph optimization based on 
+iSAM2 \citep{Kaess2014iSAM2} for the state estimation of selected keyframes. The 
+\ac{IMU} measurements between two consecutive keyframes are pre-integrated as 
+described in \citep{Forster2017Manifold} in order to be used in the 
+optimization. Both components SVO\footnote{http://rpg.ifi.uzh.ch/svo2.html}, and 
+iSAM2 implemented in the GTSAM 4.0 optimization 
+toolbox\footnote{https://bitbucket.org/gtborg/gtsam/} \citep{gtsam}, are 
+publicly available. However, the integration of these two systems is not 
+published and SVO is only provided as binaries.
+
+\section{VINS-Mono}
+VINS-Mono, presented in \citep{Qin2017VINS} is a complete VI-\ac{SLAM} system. 
+It uses 
+non-linear \ac{BA} optimization over a sliding window for the pose estimation. 
+Robust corner 
+features are tracked over consecutive frames. Similar to OKVIS, the 
+optimization 
+is performed over keyframes, which are marginalized out when they leave the 
+window. Similar to SVO, the \ac{IMU} measurements between consecutive keyframes 
+are pre-integrated to reduce the computational demand. VINS-Mono also provides 
+a tightly integrated relocalization. Together with the 4 \ac{DoF} pose 
+graph optimization it builds the back-end of the \ac{SLAM} system. The source 
+code is available as a ROS compatible 
+implementation\footnote{https://github.com/HKUST-Aerial-Robotics/VINS-Mono}.
+
+
+\section{Summary}
+As stated in the introduction, in \autoref{sec:introduction}, the goal of this 
+work is to implement a low demanding monocular keyframe based \ac{VIO} system. 
+From the above mentioned systems MSCKF and ROVIO are both filter based and do 
+not have a keyframe selection. SVO+GTSAM requires the source code to implement 
+the tightly coupled system. The source code of SVO is only available in the 
+initial version, which does not support front-looking cameras. The remaining 
+systems are OKVIS and VINS-Mono. OKVIS is optimized for stereo cameras and has 
+to re-integrate the \ac{IMU} measurements in every optimization step, leading 
+to computational overhead. VINS-Mono, on the other hand, is designed for a 
+monocular setup and does support pre-integration of the \ac{IMU} measurements in 
+order to avoid repeated \ac{IMU} re-integration. We therefore decided to use 
+VINS-Mono as basis for this work. 
