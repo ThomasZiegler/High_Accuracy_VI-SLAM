@@ -1,6 +1,3 @@
-[submodule "src/VINS-Mono"]
-	path = src/VINS-Mono
-	url = https://github.com/ThomasZiegler/VINS-Mono.git
 [submodule "src/ceres_catkin"]
 	path = src/ceres_catkin
 	url = https://github.com/ethz-asl/ceres_catkin.git
